@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Révision Chapitre 3 – La modernisation du Québec et la Révolution tranquille</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pol:#1a4a7a; --pol-light:#ddeeff; --pol-mid:#6baed6;
+  --eco:#1a6b3a; --eco-light:#d6f0df; --eco-mid:#74c476;
+  --soc:#6b2a7a; --soc-light:#f0d6f5; --soc-mid:#b07fc0;
+  --cult:#8b4500; --cult-light:#fce8d0; --cult-mid:#e6913a;
+  --comp-annot:#b5451b; --comp-light:#fdecea;
+  --doc-bg:#fffdf5; --doc-border:#e8c870;
+  --ink:#0d0d0d; --paper:#fafaf7; --card-bg:#ffffff;
+  --border:#e0ddd8; --shadow:0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover:0 8px 32px rgba(0,0,0,0.14); --radius:10px;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Source Serif 4',Georgia,serif; background:var(--paper); color:var(--ink); font-size:15px; line-height:1.65; }
+
+/* HEADER */
+header { background:linear-gradient(135deg,#0a2a52 0%,#1a4a7a 60%,#2c6fad 100%); color:#fff; padding:36px 32px 28px; position:relative; overflow:hidden; }
+header::before { content:''; position:absolute; top:-60px; right:-60px; width:260px; height:260px; background:rgba(255,255,255,0.04); border-radius:50%; }
+header h1 { font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:900; letter-spacing:-0.5px; line-height:1.2; margin-bottom:6px; }
+header p { font-size:.9rem; opacity:.8; font-style:italic; }
+.chapter-badge { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:3px 12px; font-size:.8rem; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+
+/* LEGEND */
+.legend { display:flex; flex-wrap:wrap; gap:8px; padding:14px 32px; background:#fff; border-bottom:1px solid var(--border); }
+.legend-item { display:flex; align-items:center; gap:6px; font-size:.78rem; font-weight:600; }
+.legend-dot { width:12px; height:12px; border-radius:3px; }
+
+/* TOOLBAR */
+.toolbar { display:flex; gap:10px; flex-wrap:wrap; padding:14px 32px; background:#f0eeea; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.btn { padding:7px 16px; border:none; border-radius:6px; font-family:inherit; font-size:.82rem; font-weight:600; cursor:pointer; transition:all .18s; letter-spacing:.2px; }
+.btn-primary { background:var(--pol); color:#fff; } .btn-primary:hover { background:#0e3360; }
+.btn-secondary { background:var(--eco); color:#fff; } .btn-secondary:hover { background:#104d28; }
+.btn-neutral { background:#4a4a4a; color:#fff; } .btn-neutral:hover { background:#2a2a2a; }
+.btn-active { outline:3px solid #ffd700 !important; }
+.toolbar-label { display:flex; align-items:center; font-size:.8rem; color:#666; font-weight:600; padding:0 4px; }
+
+/* TIMELINE */
+.timeline-section { padding:28px 32px 20px; background:#fff; border-bottom:2px solid var(--border); }
+.timeline-section h2 { font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:18px; color:#222; display:flex; align-items:center; gap:8px; }
+.timeline-section h2::before { content:''; display:block; width:4px; height:20px; background:var(--pol); border-radius:2px; }
+.timeline-scroll { overflow-x:auto; padding-bottom:8px; }
+.timeline-track { display:flex; align-items:flex-end; gap:0; min-width:960px; padding:0 20px; position:relative; }
+.timeline-track::before { content:''; position:absolute; bottom:28px; left:0; right:0; height:3px; background:linear-gradient(to right,var(--pol),var(--soc-mid),var(--eco)); border-radius:2px; }
+.tl-event { flex:1; display:flex; flex-direction:column; align-items:center; position:relative; cursor:pointer; min-width:75px; }
+.tl-label { font-size:.65rem; font-weight:600; text-align:center; margin-bottom:6px; padding:3px 4px; border-radius:4px; line-height:1.3; max-width:82px; transition:all .2s; color:#333; }
+.tl-dot { width:14px; height:14px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 2px currentColor; margin-bottom:6px; position:relative; z-index:2; transition:transform .2s; }
+.tl-year { font-size:.68rem; font-weight:700; color:#555; letter-spacing:.5px; }
+.tl-event:hover .tl-dot { transform:scale(1.4); }
+.tl-event:hover .tl-label { background:rgba(0,0,0,0.06); }
+.tl-pol .tl-dot { background:var(--pol); color:var(--pol); }
+.tl-eco .tl-dot { background:var(--eco); color:var(--eco); }
+.tl-soc .tl-dot { background:var(--soc); color:var(--soc); }
+.tl-cult .tl-dot { background:var(--cult); color:var(--cult); }
+
+/* TOOLTIP */
+.tooltip-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.35); z-index:200; align-items:center; justify-content:center; }
+.tooltip-overlay.active { display:flex; }
+.tooltip-box { background:#fff; border-radius:14px; padding:24px 28px; max-width:460px; width:92%; box-shadow:0 20px 60px rgba(0,0,0,0.25); position:relative; animation:popIn .2s ease; }
+@keyframes popIn { from{transform:scale(.85);opacity:0} to{transform:scale(1);opacity:1} }
+.tooltip-box h3 { font-family:'Playfair Display',serif; font-size:1.05rem; margin-bottom:10px; color:#111; }
+.tooltip-box p,.tooltip-box li { font-size:.87rem; color:#333; line-height:1.6; }
+.tooltip-box ul { padding-left:18px; margin-top:6px; }
+.tooltip-close { position:absolute; top:12px; right:14px; background:none; border:none; font-size:1.3rem; cursor:pointer; color:#666; line-height:1; }
+
+/* MAIN */
+main { padding:28px 32px; max-width:1300px; margin:0 auto; }
+.section-title { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:900; margin:32px 0 16px; display:flex; align-items:center; gap:10px; color:#111; letter-spacing:-.3px; }
+.section-title::after { content:''; flex:1; height:1px; background:var(--border); margin-left:8px; }
+.cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+
+/* CARD */
+.card { background:var(--card-bg); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; transition:box-shadow .2s,transform .2s; cursor:pointer; border:1px solid var(--border); }
+.card:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+.card-header { padding:14px 16px 10px; display:flex; align-items:flex-start; gap:10px; }
+.card-icon { font-size:1.25rem; line-height:1; flex-shrink:0; margin-top:2px; }
+.card-title { font-family:'Playfair Display',serif; font-size:.97rem; font-weight:700; line-height:1.3; color:#111; }
+.open-indicator { float:right; font-size:.9rem; color:#999; transition:transform .2s; margin-left:6px; }
+.card.open .open-indicator { transform:rotate(180deg); }
+.card-keywords { display:flex; flex-wrap:wrap; gap:5px; padding:0 16px 10px; }
+.kw { display:inline-block; padding:2px 8px; border-radius:20px; font-size:.71rem; font-weight:600; }
+.card-body { padding:10px 16px 14px; border-top:1px solid var(--border); display:none; font-size:.84rem; color:#333; line-height:1.65; animation:fadeIn .22s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
+.card.open .card-body { display:block; }
+.card-body ul { padding-left:18px; margin:6px 0; }
+.card-body li { margin-bottom:3px; }
+.card-body strong { font-weight:600; color:#111; }
+.date-badge { display:inline-block; background:#f0eeea; border:1px solid #d0ccc4; border-radius:4px; padding:1px 6px; font-size:.74rem; font-weight:700; color:#555; margin-right:3px; }
+
+/* ANNOTATION */
+.annotation { background:var(--comp-light); border-left:3px solid var(--comp-annot); border-radius:0 6px 6px 0; padding:9px 12px; margin:10px 0 4px; font-size:.82rem; color:#6b1d0e; line-height:1.55; }
+.annotation-label { display:flex; align-items:center; gap:5px; font-weight:700; font-size:.73rem; margin-bottom:4px; color:var(--comp-annot); text-transform:uppercase; letter-spacing:.5px; }
+.annotation ul { padding-left:16px; margin-top:4px; }
+.annotation li { margin-bottom:2px; }
+
+/* DOCUMENT BLOCK */
+.doc-block { background:var(--doc-bg); border:1px solid var(--doc-border); border-radius:8px; margin:10px 0 4px; overflow:hidden; }
+.doc-header { background:#fef7e0; padding:6px 12px; display:flex; align-items:center; gap:7px; border-bottom:1px solid var(--doc-border); }
+.doc-num { background:#e6a800; color:#fff; border-radius:4px; padding:1px 7px; font-size:.7rem; font-weight:700; letter-spacing:.3px; }
+.doc-title { font-size:.74rem; font-weight:600; color:#7a5200; font-style:italic; }
+.doc-body { padding:8px 12px; font-size:.82rem; color:#3a2800; line-height:1.6; }
+.doc-body blockquote { border-left:3px solid var(--doc-border); padding-left:10px; margin:4px 0; font-style:italic; color:#5a4000; }
+.doc-body .source { font-size:.71rem; color:#888; margin-top:5px; text-align:right; font-style:italic; }
+.doc-question { background:#fff8e8; border-top:1px dashed var(--doc-border); padding:7px 12px; font-size:.78rem; color:#7a5200; }
+.doc-question strong { color:#5a3000; }
+
+/* GRAPHIQUE SVG */
+.chart-wrap { padding:8px 12px 10px; }
+.chart-wrap svg { width:100%; max-width:340px; display:block; margin:0 auto; }
+
+/* THEME COLORS */
+.theme-pol .card-header { background:var(--pol-light); border-bottom:2px solid var(--pol-mid); }
+.theme-eco .card-header { background:var(--eco-light); border-bottom:2px solid var(--eco-mid); }
+.theme-soc .card-header { background:var(--soc-light); border-bottom:2px solid var(--soc-mid); }
+.theme-cult .card-header { background:var(--cult-light); border-bottom:2px solid var(--cult-mid); }
+.theme-pol .kw { background:var(--pol-light); color:var(--pol); }
+.theme-eco .kw { background:var(--eco-light); color:var(--eco); }
+.theme-soc .kw { background:var(--soc-light); color:var(--soc); }
+.theme-cult .kw { background:var(--cult-light); color:var(--cult); }
+
+/* REVISION MODE */
+body.revision-mode .card-body { display:none !important; }
+body.revision-mode .card { cursor:default; }
+body.revision-mode .card:hover { transform:none; box-shadow:var(--shadow); }
+body.revision-mode .card-keywords { display:none; }
+body.revision-mode .revision-hint { display:block; }
+.revision-hint { display:none; font-size:.75rem; color:#999; font-style:italic; padding:6px 16px 10px; }
+
+/* EXAM BOX */
+.exam-box { background:#fffbf0; border:2px solid #f0c040; border-radius:10px; padding:16px 20px; margin:24px 0 8px; }
+.exam-box h3 { font-family:'Playfair Display',serif; font-size:.95rem; color:#7a5200; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.exam-box ul { padding-left:18px; font-size:.84rem; color:#5a4000; }
+.exam-box li { margin-bottom:4px; }
+
+/* ILLUSTRATIONS SVG */
+.illus-wrap { margin:10px 0 4px; border-radius:8px; overflow:hidden; background:#f8f7f4; border:1px solid var(--border); }
+.illus-wrap svg { display:block; width:100%; }
+.illus-caption { font-size:.72rem; color:#888; text-align:center; padding:4px 8px 7px; font-style:italic; }
+
+@media(max-width:640px) {
+  header { padding:20px 16px; } header h1 { font-size:1.35rem; }
+  .toolbar,.legend,main { padding-left:16px; padding-right:16px; }
+  .cards-grid { grid-template-columns:1fr; }
+  .timeline-section { padding:18px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="chapter-badge">Histoire · Secondaire 4</div>
+  <h1>Chapitre 3 — La modernisation du Québec<br>et la Révolution tranquille</h1>
+  <p>Période : 1945–1980 · Fiche de révision interactive avec documents d'examen</p>
+</header>
+
+<div class="legend">
+  <span class="toolbar-label">Thèmes :</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--pol)"></span>Politique</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--eco)"></span>Économique</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--soc)"></span>Social</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--cult)"></span>Culturel</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--comp-annot)"></span>✏️ Complément</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#e6a800"></span>📄 Document d'examen</span>
+</div>
+
+<div class="toolbar">
+  <span class="toolbar-label">Affichage :</span>
+  <button class="btn btn-primary" onclick="showAll()">Tout afficher</button>
+  <button class="btn btn-neutral" onclick="closeAll()">Tout fermer</button>
+  <button class="btn btn-secondary" id="btn-revision" onclick="toggleRevision()">📝 Mode révision</button>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline-section">
+  <h2>Frise chronologique — cliquez sur un événement</h2>
+  <div class="timeline-scroll">
+    <div class="timeline-track">
+      <div class="tl-event tl-soc" onclick="openTooltip('t1')"><div class="tl-label">Grève de l'amiante</div><div class="tl-dot"></div><div class="tl-year">1949</div></div>
+      <div class="tl-event tl-pol" onclick="openTooltip('t2')"><div class="tl-label">Élection Jean Lesage</div><div class="tl-dot"></div><div class="tl-year">1960</div></div>
+      <div class="tl-event tl-eco" onclick="openTooltip('t3')"><div class="tl-label">Nationalisation électricité</div><div class="tl-dot"></div><div class="tl-year">1962</div></div>
+      <div class="tl-event tl-cult" onclick="openTooltip('t4')"><div class="tl-label">Rapport Parent</div><div class="tl-dot"></div><div class="tl-year">1963</div></div>
+      <div class="tl-event tl-soc" onclick="openTooltip('t5')"><div class="tl-label">Loi 16 – femmes</div><div class="tl-dot"></div><div class="tl-year">1964</div></div>
+      <div class="tl-event tl-cult" onclick="openTooltip('t6')"><div class="tl-label">Expo 67</div><div class="tl-dot"></div><div class="tl-year">1967</div></div>
+      <div class="tl-event tl-pol" onclick="openTooltip('t7')"><div class="tl-label">Crise d'Octobre</div><div class="tl-dot"></div><div class="tl-year">1970</div></div>
+      <div class="tl-event tl-soc" onclick="openTooltip('t8')"><div class="tl-label">Front commun</div><div class="tl-dot"></div><div class="tl-year">1972</div></div>
+      <div class="tl-event tl-eco" onclick="openTooltip('t9')"><div class="tl-label">Crise du pétrole</div><div class="tl-dot"></div><div class="tl-year">1973</div></div>
+      <div class="tl-event tl-pol" onclick="openTooltip('t10')"><div class="tl-label">Conv. Baie-James</div><div class="tl-dot"></div><div class="tl-year">1975</div></div>
+      <div class="tl-event tl-pol" onclick="openTooltip('t11')"><div class="tl-label">Élection PQ</div><div class="tl-dot"></div><div class="tl-year">1976</div></div>
+      <div class="tl-event tl-cult" onclick="openTooltip('t12')"><div class="tl-label">Loi 101</div><div class="tl-dot"></div><div class="tl-year">1977</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="tooltip-overlay" id="tooltip-overlay" onclick="closeTooltip(event)">
+  <div class="tooltip-box" id="tooltip-box">
+    <button class="tooltip-close" onclick="closeTooltip()">✕</button>
+    <h3 id="tt-title"></h3>
+    <div id="tt-body"></div>
+  </div>
+</div>
+
+<main>
+
+<!-- ===== PÉRIODE DUPLESSISTE ===== -->
+<div class="section-title">🏛️ La période duplessiste (1944–1960)</div>
+<div class="cards-grid">
+
+  <div class="card theme-pol" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🏛️</span><span class="card-title">Période duplessiste <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Autonomie provinciale</span><span class="kw">Union nationale</span><span class="kw">Grande Noirceur</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="160" fill="#e8eef6"/>
+          <rect x="30" y="90" width="130" height="60" fill="#c8bfa8"/>
+          <rect x="50" y="75" width="90" height="20" fill="#b5a98e"/>
+          <rect x="45" y="90" width="8" height="60" fill="#a89878"/>
+          <rect x="65" y="90" width="8" height="60" fill="#a89878"/>
+          <rect x="87" y="90" width="8" height="60" fill="#a89878"/>
+          <rect x="107" y="90" width="8" height="60" fill="#a89878"/>
+          <rect x="127" y="90" width="8" height="60" fill="#a89878"/>
+          <polygon points="80,55 160,75 0,75" fill="#b5a98e"/>
+          <rect x="78" y="30" width="4" height="28" fill="#8a7a60"/>
+          <polygon points="80,22 85,30 75,30" fill="#d4a520"/>
+          <rect x="195" y="30" width="120" height="80" rx="3" fill="#002395"/>
+          <rect x="245" y="30" width="10" height="80" fill="white"/>
+          <rect x="195" y="65" width="120" height="10" fill="white"/>
+          <text x="222" y="58" text-anchor="middle" font-size="18" fill="white" font-family="serif">&#x269C;</text>
+          <text x="292" y="58" text-anchor="middle" font-size="18" fill="white" font-family="serif">&#x269C;</text>
+          <text x="222" y="105" text-anchor="middle" font-size="18" fill="white" font-family="serif">&#x269C;</text>
+          <text x="292" y="105" text-anchor="middle" font-size="18" fill="white" font-family="serif">&#x269C;</text>
+          <rect x="190" y="10" width="3" height="105" fill="#7a6a50"/>
+          <rect x="0" y="148" width="340" height="12" fill="#8a9e6a"/>
+          <rect x="8" y="8" width="126" height="16" rx="4" fill="rgba(0,0,0,0.3)"/>
+          <text x="71" y="19" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif">Parlement du Quebec</text>
+          <rect x="193" y="8" width="110" height="16" rx="4" fill="rgba(0,0,0,0.35)"/>
+          <text x="248" y="19" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif">Fleurdelise — 1948</text>
+        </svg>
+        <div class="illus-caption">Le parlement du Québec · Adoption du fleurdelisé en 1948</div>
+      </div>
+      <p>L'Union nationale de Duplessis défend l'<strong>autonomie provinciale</strong> et le conservatisme social.</p>
+      <ul>
+        <li>Refus des subventions fédérales aux universités (compétence provinciale)</li>
+        <li><strong>Double impôt 1954</strong> : fédéral et provincial</li>
+        <li>Encourage le mode de vie rural</li>
+      </ul>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Adoption du <strong>drapeau fleurdelisé</strong> <span class="date-badge">1948</span> = affirmation de l'identité québécoise</li>
+          <li>Période surnommée <strong>Grande Noirceur</strong> (conservatisme social)</li>
+        </ul>
+      </div>
+      <!-- DOC D'EXAMEN -->
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 8 – Fiche 3.1</span><span class="doc-title">Discours de Duplessis, janv. 1950</span></div>
+        <div class="doc-body">
+          <blockquote>« Dans l'esprit de la Confédération, il existe et doit exister deux autorités souveraines : l'autorité centrale dans la sphère de sa juridiction et l'autorité provinciale dans la sphère de sa juridiction. Notre régime de gouvernement est fondé sur le principe de l'autonomie complète des provinces. »</blockquote>
+          <div class="source">— Conférence fédérale-provinciale sur la Constitution, janvier 1950</div>
+        </div>
+        <div class="doc-question">❓ <strong>Ce doc illustre quoi ?</strong> L'affirmation de l'autonomie provinciale par Duplessis (aspect politique).</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 1 – Fiche 3.1</span><span class="doc-title">L'adoption du fleurdelisé</span></div>
+        <div class="doc-body"><p>📷 Photo : deux hommes tiennent fièrement le nouveau drapeau du Québec (croix blanche sur fond bleu, avec fleurs de lys).</p></div>
+        <div class="doc-question">❓ <strong>Ce doc illustre quoi ?</strong> L'affirmation de l'identité québécoise sous Duplessis (1948).</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-pol" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">⛪</span><span class="card-title">Cléricalisme sous Duplessis <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Église catholique</span><span class="kw">Éducation</span><span class="kw">Santé</span></div>
+    <div class="card-body">
+      <p>L'Union nationale est favorable à l'implication du clergé dans les affaires publiques. L'Église assure la majeure partie des <strong>services sociaux</strong>.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        L'Église prend en charge l'<strong>éducation et la santé</strong> → garde le contrôle de la population.
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 6 – Fiche 3.2</span><span class="doc-title">Discours de Duplessis sur le clergé, 1947</span></div>
+        <div class="doc-body">
+          <blockquote>« Dans bien des pays, on a oublié les vérités que nous respectons ici dans la province de Québec. La valeur de la terre, l'indispensabilité de l'agriculture et l'indispensabilité des convictions et des traditions religieuses. […] un prêtre, qu'est-ce que c'est ? C'est un grand cultivateur qui […] peine, se dévoue et travaille non pas pour assurer des moissons temporelles, mais en vue de moissons éternelles. »</blockquote>
+          <div class="source">— Discours au banquet de la jeunesse rurale, sept. 1947</div>
+        </div>
+        <div class="doc-question">❓ <strong>Ce doc illustre quoi ?</strong> Le cléricalisme et l'idéologie de Duplessis. Point de désaccord avec le Refus global (Doc 7 / Fiche 3.2).</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 2 – Fiche 3.2 (section B)</span><span class="doc-title">Position de Duplessis sur l'Église</span></div>
+        <div class="doc-body">
+          <blockquote>« [Le premier ministre] est d'avis que les domaines de l'éducation et de la santé doivent demeurer entre les mains de l'Église catholique, même si son gouvernement y investit des sommes publiques. Il refuse que l'État les prenne en charge. »</blockquote>
+          <div class="source">— Mémoire.qc.ca, 2018</div>
+        </div>
+        <div class="doc-question">❓ <strong>Réponse attendue Q.1 Fiche 3.2 :</strong> Le point de désaccord entre Duplessis (Doc 6) et le Refus global (Doc 7) est <strong>le rôle que doit jouer l'Église catholique dans la société québécoise</strong>.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-cult" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🎨</span><span class="card-title">Mouvement de contestation <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Refus global</span><span class="kw">Laïcisme</span><span class="kw">Le Devoir</span></div>
+    <div class="card-body">
+      <p>Des artistes et intellectuels rejettent le <strong>conservatisme</strong> et l'influence de l'Église. Ils font la promotion du <strong>laïcisme</strong>.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li><strong>Manifeste du Refus global</strong> <span class="date-badge">1948</span> = critique d'un collectif d'artistes (Borduas)</li>
+          <li>Journal <strong>Le Devoir</strong> = critique des intellectuels</li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 4 – Fiche 3.1 / DOC 7 – Fiche 3.2</span><span class="doc-title">Extrait du Refus global, 1948</span></div>
+        <div class="doc-body">
+          <blockquote>« Un petit peuple serré de près aux soutanes restées les seules dépositaires de la foi, du savoir, de la vérité et de la richesse nationale. Tenu à l'écart de l'évolution universelle de la pensée pleine de risques et de dangers, éduqué sans mauvaise volonté, mais sans contrôle […]. »</blockquote>
+          <div class="source">— Manifeste du Refus global, 1948</div>
+        </div>
+        <div class="doc-question">❓ <strong>Ce doc illustre quoi ?</strong> La contestation des artistes (critère 2 Q.5 Fiche 3.1 : doc de la contestation des artistes). Il s'oppose au cléricalisme de Duplessis.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 5 – Fiche 3.1</span><span class="doc-title">Cité libre – Pierre Elliott Trudeau</span></div>
+        <div class="doc-body">
+          <blockquote>« Le dénominateur commun des collaborateurs de Cité libre ? "Un désir que ça change, exprime Pierre Elliott Trudeau. Un désir encore une fois que l'idée dominante soit remplacée par une idéologie qui s'adapte mieux à la réalité d'après-guerre." »</blockquote>
+          <div class="source">— Radio-Canada, 2020</div>
+        </div>
+        <div class="doc-question">❓ <strong>Ce doc illustre quoi ?</strong> La contestation des intellectuels (Q.5 Fiche 3.1 : doc de la contestation des intellectuels).</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">✊</span><span class="card-title">Grève de l'amiante 1949 – Relations syndicales <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Syndicats</span><span class="kw">Patronat</span><span class="kw">Antisyndicalisme</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="150" fill="#e8e0d4"/>
+          <!-- Ciel gris -->
+          <rect width="340" height="70" fill="#b0aaa2"/>
+          <!-- Cheminée d'usine avec fumée -->
+          <rect x="240" y="30" width="22" height="80" fill="#6a6055"/>
+          <rect x="220" y="55" width="60" height="55" fill="#7a7060"/>
+          <!-- Fumée -->
+          <ellipse cx="251" cy="22" rx="12" ry="9" fill="#999" opacity=".7"/>
+          <ellipse cx="260" cy="14" rx="9" ry="7" fill="#aaa" opacity=".6"/>
+          <ellipse cx="268" cy="8" rx="7" ry="6" fill="#bbb" opacity=".5"/>
+          <!-- Mine / bâtiment -->
+          <rect x="10" y="60" width="140" height="80" fill="#8a8070"/>
+          <rect x="25" y="45" width="110" height="20" fill="#7a7060"/>
+          <polygon points="80,28 135,45 25,45" fill="#6a6055"/>
+          <!-- Fenêtres usine -->
+          <rect x="30" y="75" width="18" height="14" rx="2" fill="#c8b870" opacity=".6"/>
+          <rect x="58" y="75" width="18" height="14" rx="2" fill="#c8b870" opacity=".6"/>
+          <rect x="86" y="75" width="18" height="14" rx="2" fill="#c8b870" opacity=".6"/>
+          <!-- Grévistes (silhouettes) -->
+          <circle cx="60" cy="118" r="8" fill="#3a3028"/>
+          <rect x="54" y="126" width="12" height="18" rx="2" fill="#3a3028"/>
+          <circle cx="85" cy="116" r="8" fill="#2a2420"/>
+          <rect x="79" y="124" width="12" height="20" rx="2" fill="#2a2420"/>
+          <circle cx="110" cy="118" r="8" fill="#3a3028"/>
+          <rect x="104" y="126" width="12" height="18" rx="2" fill="#3a3028"/>
+          <!-- Pancarte de grève -->
+          <rect x="92" y="96" width="40" height="18" rx="3" fill="#c8392b"/>
+          <text x="112" y="108" text-anchor="middle" font-size="8" fill="white" font-family="sans-serif" font-weight="bold">GREVE</text>
+          <rect x="110" y="114" width="3" height="24" fill="#7a6a50"/>
+          <!-- Sol -->
+          <rect x="0" y="140" width="340" height="10" fill="#6a7a50"/>
+          <!-- Label -->
+          <rect x="165" y="55" width="100" height="16" rx="4" fill="rgba(0,0,0,0.4)"/>
+          <text x="215" y="66" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif">Asbestos, 1949</text>
+        </svg>
+        <div class="illus-caption">La grève de l'amiante · Travailleurs contre le gouvernement Duplessis</div>
+      </div>
+      <p>Duplessis appuie le <strong>patronat</strong> et s'oppose au mouvement syndical. La police provinciale intervient contre les manifestants.</p>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 3 – Fiche 3.1 / DOC 1 – Fiche 3.2 (section B)</span><span class="doc-title">La grève de l'amiante, 1949</span></div>
+        <div class="doc-body"><p>📷 Photo : des travailleurs en grève devant des camions, avec des pancartes de revendication (noms : Yvan, Hilaire…).</p></div>
+        <div class="doc-question">❓ <strong>Ce doc illustre quoi ?</strong> La contestation des syndicats contre le gouvernement Duplessis (Q.5 Fiche 3.1).</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-eco" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">⛏️</span><span class="card-title">Entreprises américaines & Ressources naturelles <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Libéralisme économique</span><span class="kw">Côte-Nord</span><span class="kw">Guerre froide</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="150" fill="#d8e4cc"/>
+          <!-- Paysage nordique -->
+          <polygon points="0,100 40,60 80,80 130,45 180,70 220,50 270,75 340,55 340,100" fill="#8aaa78"/>
+          <!-- Mine à ciel ouvert (schéma) -->
+          <polygon points="30,100 90,100 75,135 45,135" fill="#b09878"/>
+          <polygon points="40,100 80,100 68,120 52,120" fill="#c0a888"/>
+          <polygon points="50,100 70,100 62,110 58,110" fill="#d0b898"/>
+          <!-- Rails de train -->
+          <rect x="75" y="124" width="180" height="4" fill="#6a5a48"/>
+          <rect x="75" y="131" width="180" height="4" fill="#6a5a48"/>
+          <!-- Traverses -->
+          <rect x="80" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="100" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="120" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="140" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="160" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="180" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="200" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="220" y="122" width="4" height="15" fill="#8a7a60"/>
+          <rect x="240" y="122" width="4" height="15" fill="#8a7a60"/>
+          <!-- Wagon de minerai -->
+          <rect x="95" y="108" width="45" height="18" rx="3" fill="#5a5048"/>
+          <rect x="98" y="111" width="39" height="10" rx="2" fill="#8a6030" opacity=".8"/>
+          <circle cx="103" cy="128" r="4" fill="#3a3028"/>
+          <circle cx="133" cy="128" r="4" fill="#3a3028"/>
+          <!-- Locomotive -->
+          <rect x="145" y="103" width="55" height="23" rx="4" fill="#3a5068"/>
+          <rect x="195" y="100" width="18" height="26" rx="3" fill="#2a4058"/>
+          <!-- Cheminée loco -->
+          <rect x="148" y="95" width="8" height="12" fill="#2a4058"/>
+          <!-- Fumée locomotive -->
+          <ellipse cx="152" cy="90" rx="7" ry="5" fill="#aaa" opacity=".7"/>
+          <ellipse cx="158" cy="84" rx="5" ry="4" fill="#bbb" opacity=".6"/>
+          <circle cx="155" cy="128" r="4" fill="#3a3028"/>
+          <circle cx="185" cy="128" r="4" fill="#3a3028"/>
+          <!-- Logo USA $ -->
+          <circle cx="295" cy="55" r="22" fill="#3060a8" opacity=".9"/>
+          <text x="295" y="62" text-anchor="middle" font-size="20" fill="#f0d040" font-family="sans-serif" font-weight="bold">$</text>
+          <!-- Flèche USA vers Quebec -->
+          <line x1="273" y1="65" x2="225" y2="90" stroke="#d04030" stroke-width="2" stroke-dasharray="5,3"/>
+          <polygon points="225,90 232,84 230,96" fill="#d04030"/>
+          <!-- Labels -->
+          <rect x="8" y="8" width="140" height="16" rx="4" fill="rgba(0,0,0,0.3)"/>
+          <text x="78" y="19" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif">Mine de fer — Nouveau-Quebec</text>
+          <text x="290" y="88" text-anchor="middle" font-size="8" fill="#3060a8" font-family="sans-serif" font-weight="bold">Investissements</text>
+          <text x="290" y="98" text-anchor="middle" font-size="8" fill="#3060a8" font-family="sans-serif" font-weight="bold">americains</text>
+        </svg>
+        <div class="illus-caption">Exploitation minière du Nouveau-Québec · Chemin de fer vers Sept-Îles · Capitaux américains</div>
+      </div>
+      <p>Duplessis s'en remet aux <strong>entreprises américaines</strong> pour le développement économique du Québec.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Gouvernement investit peu ; entreprises privées américaines investissent dans les régions riches en ressources (gisements de fer) : main-d'œuvre bon marché + fiscalité avantageuse</li>
+          <li>Développement des régions <strong>Nouveau-Québec</strong> et <strong>Nord du Québec</strong></li>
+          <li>Stimulation de l'économie américaine (conséquence Guerre froide) ⇒ besoin d'industrie américaine en ressources minières</li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 2 – Fiche 3.1 / DOC 2 – Section C Fiche 3.1</span><span class="doc-title">Développement portuaire Côte-Nord, 1950 / Ressources minières</span></div>
+        <div class="doc-body">
+          <p>📷 Photo : installations portuaires industrielles sur la Côte-Nord, 1950.</p>
+          <p style="margin-top:6px">📷 Carte : exploitation des ressources minières (or, argent, cuivre, amiante, fer, titane) dans le Nouveau-Québec et la Côte-Nord, avec lignes de chemin de fer minier reliant Schefferville, Gagnon, Port-Cartier et Sept-Îles.</p>
+          <blockquote style="margin-top:6px">La Côte-Nord se développa rapidement […]. Les villes de Schefferville et Gagnon prirent de l'expansion et furent reliées à Sept-Îles par le chemin de fer de l'Iron Ore Company.</blockquote>
+          <div class="source">— Dickinson & Young, Brève histoire socio-économique du Québec, 2003</div>
+          <blockquote style="margin-top:6px">Entre 1945 et 1960, la valeur de la production minière passe de 91,5 millions à 446,6 millions de dollars. L'économie du Québec dans les années 1950 est fortement dépendante des relations commerciales avec les États-Unis.</blockquote>
+          <div class="source">— Horguelin et al., Fresques, tome 1, 2008</div>
+        </div>
+        <div class="doc-question">❓ <strong>Q.3 Fiche 3.1 :</strong> Conséquence de l'exploitation par les Américains = <strong>construction d'installations portuaires et de chemins de fer</strong>. Q.3 Fiche 3.2 : les deux régions = <strong>Côte-Nord et Nouveau-Québec</strong>.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 8 – Section C Fiche 3.1</span><span class="doc-title">La guerre froide (caricature, J. Collins, 1951)</span></div>
+        <div class="doc-body"><p>🖼️ Caricature montrant la tension entre les États-Unis et l'URSS (étiquette « Cold War »).</p></div>
+        <div class="doc-question">❓ <strong>Critère 4 :</strong> Cause de l'augmentation des échanges commerciaux avec les USA = <strong>la Guerre froide</strong> engendre une course aux armements qui accroît la demande américaine de matières premières (acier). OU la signature du GATT (Doc 7 – Section C).</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-eco" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🌾</span><span class="card-title">Agriculture & Électrification rurale <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Électrification</span><span class="kw">Modernisation</span><span class="kw">Électorat rural</span></div>
+    <div class="card-body">
+      <p>Duplessis mise sur l'<strong>électrification des régions rurales</strong> pour moderniser l'agriculture.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Permet de <strong>produire davantage</strong></li>
+          <li>Création du <strong>ministère de l'Agriculture</strong></li>
+          <li>Stratégie : fidélisation de l'<strong>électorat rural</strong></li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 6 – Fiche 3.1</span><span class="doc-title">La traite avec une trayeuse électrique, vers 1945</span></div>
+        <div class="doc-body"><p>📷 Photo : une femme effectue la traite des vaches à l'aide d'une trayeuse électrique, vers 1945.</p></div>
+        <div class="doc-question">❓ <strong>Q.4 Fiche 3.1 :</strong> Changement à partir de 1945 dans les campagnes = <strong>l'électrification rurale / la modernisation des fermes grâce à l'électricité</strong>.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+</div>
+
+<!-- ===== CONTEXTE APRÈS-GUERRE ===== -->
+<div class="section-title">🌍 Contexte de l'après-guerre (1945–1960)</div>
+<div class="cards-grid">
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">👶</span><span class="card-title">Bébé-boum & Démographie <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Bébé-boum</span><span class="kw">Natalité</span><span class="kw">1945-1960</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 155" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="155" fill="#fdf5e8"/>
+          <!-- Bungalow famille années 50 -->
+          <!-- Maison -->
+          <rect x="20" y="80" width="140" height="65" fill="#e8d5b0"/>
+          <polygon points="20,80 90,40 160,80" fill="#c8906a"/>
+          <!-- Fenêtres -->
+          <rect x="35" y="95" width="28" height="22" rx="2" fill="#a8c8e8" opacity=".8"/>
+          <line x1="49" y1="95" x2="49" y2="117" stroke="white" stroke-width="1.5"/>
+          <line x1="35" y1="106" x2="63" y2="106" stroke="white" stroke-width="1.5"/>
+          <rect x="95" y="95" width="28" height="22" rx="2" fill="#a8c8e8" opacity=".8"/>
+          <line x1="109" y1="95" x2="109" y2="117" stroke="white" stroke-width="1.5"/>
+          <line x1="95" y1="106" x2="123" y2="106" stroke="white" stroke-width="1.5"/>
+          <!-- Porte -->
+          <rect x="65" y="108" width="22" height="37" rx="2" fill="#8a6040"/>
+          <circle cx="84" cy="128" r="2" fill="#d4a040"/>
+          <!-- Cheminée -->
+          <rect x="120" y="50" width="14" height="28" fill="#c8906a"/>
+          <!-- Fumée cheminée -->
+          <ellipse cx="127" cy="44" rx="6" ry="5" fill="#ccc" opacity=".6"/>
+          <ellipse cx="132" cy="38" rx="5" ry="4" fill="#ddd" opacity=".5"/>
+          <!-- Sol / pelouse -->
+          <rect x="0" y="143" width="340" height="12" fill="#8ab870"/>
+          <!-- Famille (silhouettes) -->
+          <!-- Papa -->
+          <circle cx="205" cy="85" r="10" fill="#4a5568"/>
+          <rect x="197" y="95" width="16" height="28" rx="3" fill="#4a5568"/>
+          <!-- Maman -->
+          <circle cx="235" cy="87" r="10" fill="#7a5060"/>
+          <path d="M225,97 Q235,90 245,97 L247,143 L223,143 Z" fill="#9a6070"/>
+          <!-- Enfant 1 -->
+          <circle cx="260" cy="98" r="7" fill="#5a8060"/>
+          <rect x="254" y="105" width="12" height="20" rx="2" fill="#5a8060"/>
+          <!-- Enfant 2 (bébé) -->
+          <circle cx="220" cy="105" r="6" fill="#c88060"/>
+          <rect x="215" y="111" width="10" height="16" rx="2" fill="#c88060"/>
+          <!-- Landau bébé -->
+          <ellipse cx="183" cy="115" rx="18" ry="12" fill="#e8c070"/>
+          <rect x="165" y="107" width="36" height="16" rx="6" fill="#d8b060"/>
+          <circle cx="170" cy="127" r="5" fill="#8a7050"/>
+          <circle cx="196" cy="127" r="5" fill="#8a7050"/>
+          <rect x="182" y="103" width="2" height="14" fill="#8a7050"/>
+          <!-- Soleil -->
+          <circle cx="310" cy="30" r="18" fill="#f0c030" opacity=".85"/>
+          <line x1="310" y1="8" x2="310" y2="2" stroke="#f0c030" stroke-width="2"/>
+          <line x1="310" y1="58" x2="310" y2="52" stroke="#f0c030" stroke-width="2"/>
+          <line x1="288" y1="30" x2="282" y2="30" stroke="#f0c030" stroke-width="2"/>
+          <line x1="332" y1="30" x2="338" y2="30" stroke="#f0c030" stroke-width="2"/>
+          <!-- Label -->
+          <rect x="8" y="8" width="130" height="16" rx="4" fill="rgba(0,0,0,0.2)"/>
+          <text x="73" y="19" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif">Banlieue quebecoise, annees 1950</text>
+        </svg>
+        <div class="illus-caption">La famille québécoise et le bébé-boum des années 1945–1960</div>
+      </div>
+      <p>La période de l'après-guerre est caractérisée par le <strong>bébé-boum</strong> : forte hausse de la natalité. À partir des années 1960 : <strong>dénatalité</strong>.</p>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 9 – Fiche 3.1 / DOC 20 – Fiche 3.2</span><span class="doc-title">Graphique : Taux de natalité au Québec, 1940-1960</span></div>
+        <div class="chart-wrap">
+          <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="320" height="160" fill="#fffdf5" rx="4"/>
+            <!-- Axes -->
+            <line x1="45" y1="10" x2="45" y2="130" stroke="#888" stroke-width="1.5"/>
+            <line x1="45" y1="130" x2="310" y2="130" stroke="#888" stroke-width="1.5"/>
+            <!-- Y labels -->
+            <text x="40" y="133" text-anchor="end" font-size="9" fill="#666">0</text>
+            <text x="40" y="105" text-anchor="end" font-size="9" fill="#666">10</text>
+            <text x="40" y="77" text-anchor="end" font-size="9" fill="#666">20</text>
+            <text x="40" y="49" text-anchor="end" font-size="9" fill="#666">30</text>
+            <text x="40" y="22" text-anchor="end" font-size="9" fill="#666">35</text>
+            <!-- Grid -->
+            <line x1="45" y1="105" x2="310" y2="105" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <line x1="45" y1="77" x2="310" y2="77" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <line x1="45" y1="49" x2="310" y2="49" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <!-- Bars: 1940=25, 1945=28, 1950=30, 1955=30, 1960=27 -->
+            <!-- bar width=38, gap=10 -->
+            <rect x="55" y="58" width="38" height="72" fill="#6baed6" rx="3"/>
+            <rect x="103" y="49" width="38" height="81" fill="#6baed6" rx="3"/>
+            <rect x="151" y="43" width="38" height="87" fill="#1a4a7a" rx="3"/>
+            <rect x="199" y="43" width="38" height="87" fill="#1a4a7a" rx="3"/>
+            <rect x="247" y="51" width="38" height="79" fill="#6baed6" rx="3"/>
+            <!-- X labels -->
+            <text x="74" y="145" text-anchor="middle" font-size="9" fill="#555">1940</text>
+            <text x="122" y="145" text-anchor="middle" font-size="9" fill="#555">1945</text>
+            <text x="170" y="145" text-anchor="middle" font-size="9" fill="#555">1950</text>
+            <text x="218" y="145" text-anchor="middle" font-size="9" fill="#555">1955</text>
+            <text x="266" y="145" text-anchor="middle" font-size="9" fill="#555">1960</text>
+            <!-- Title -->
+            <text x="175" y="158" text-anchor="middle" font-size="8" fill="#888">naissances pour 1000 habitants</text>
+            <!-- Values -->
+            <text x="74" y="55" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">25</text>
+            <text x="122" y="46" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">28</text>
+            <text x="170" y="40" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">30</text>
+            <text x="218" y="40" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">30</text>
+            <text x="266" y="48" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">27</text>
+          </svg>
+        </div>
+        <div class="doc-question">❓ <strong>Q.7 Fiche 3.1 / Q.5 Fiche 3.2 :</strong> Changement démographique = <strong>augmentation de la natalité / le bébé-boum</strong>. Après 1960, la natalité connaît une baisse importante.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 19 – Fiche 3.2</span><span class="doc-title">Une famille nombreuse dans les années 1950</span></div>
+        <div class="doc-body"><p>📷 Photo : une grande famille regroupée pour une photo.</p></div>
+        <div class="doc-question">❓ Illustre le bébé-boum et les valeurs familiales de la période duplessiste.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">📺</span><span class="card-title">Société de consommation & Culture américaine <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Télévision</span><span class="kw">Culture américaine</span><span class="kw">Bungalow</span></div>
+    <div class="card-body">
+      <p>La culture québécoise subit l'influence de la culture américaine. L'augmentation du <strong>pouvoir d'achat</strong> favorise les biens de consommation. Le crédit devient plus accessible.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        Banlieue = <strong>maison unifamiliale / bungalow</strong> comme bien de consommation emblématique.
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 7 – Fiche 3.1 / DOC 1 – Fiche 3.2</span><span class="doc-title">Une famille devant un téléviseur</span></div>
+        <div class="doc-body"><p>📷 Photo : une famille (père, mère, enfants) assise dans le salon devant un gros téléviseur des années 1950.</p></div>
+        <div class="doc-question">❓ <strong>Q.6 Fiche 3.1 :</strong> Cause de l'influence grandissante de la culture américaine = <strong>la présence croissante des téléviseurs</strong> (ou les émissions/publicités américaines).</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 2 – Fiche 3.2 / DOC 4 – Section B</span><span class="doc-title">Publicité de voiture américaine, 1952</span></div>
+        <div class="doc-body"><p>📷 Publicité élégante montrant un couple devant une imposante voiture américaine des années 1950.</p></div>
+        <div class="doc-question">❓ Illustre la société de consommation et l'influence de la culture américaine. Bien de consommation associé au développement des banlieues = <strong>l'automobile / la voiture</strong>.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 5 – Fiche 3.2</span><span class="doc-title">Graphique : Revenu personnel au Québec, 1950-1970</span></div>
+        <div class="chart-wrap">
+          <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="240" height="140" fill="#fffdf5" rx="4"/>
+            <line x1="40" y1="10" x2="40" y2="110" stroke="#888" stroke-width="1.5"/>
+            <line x1="40" y1="110" x2="230" y2="110" stroke="#888" stroke-width="1.5"/>
+            <text x="36" y="113" text-anchor="end" font-size="8" fill="#666">0</text>
+            <text x="36" y="88" text-anchor="end" font-size="8" fill="#666">4</text>
+            <text x="36" y="66" text-anchor="end" font-size="8" fill="#666">8</text>
+            <text x="36" y="44" text-anchor="end" font-size="8" fill="#666">12</text>
+            <line x1="40" y1="88" x2="230" y2="88" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <line x1="40" y1="66" x2="230" y2="66" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <line x1="40" y1="44" x2="230" y2="44" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <!-- 1950=6, 1960=8, 1970=12 -->
+            <rect x="55" y="68" width="45" height="42" fill="#74c476" rx="3"/>
+            <rect x="120" y="54" width="45" height="56" fill="#74c476" rx="3"/>
+            <rect x="185" y="34" width="45" height="76" fill="#1a6b3a" rx="3"/>
+            <text x="77" y="115" text-anchor="middle" font-size="8" fill="#555">1950</text>
+            <text x="142" y="115" text-anchor="middle" font-size="8" fill="#555">1960</text>
+            <text x="207" y="115" text-anchor="middle" font-size="8" fill="#555">1970</text>
+            <text x="77" y="64" text-anchor="middle" font-size="9" fill="#1a6b3a" font-weight="bold">6</text>
+            <text x="142" y="50" text-anchor="middle" font-size="9" fill="#1a6b3a" font-weight="bold">8</text>
+            <text x="207" y="30" text-anchor="middle" font-size="9" fill="#1a6b3a" font-weight="bold">12</text>
+            <text x="130" y="132" text-anchor="middle" font-size="8" fill="#888">revenu par habitant (milliers de $)</text>
+          </svg>
+        </div>
+        <div class="doc-question">❓ Illustre la croissance économique des Trente Glorieuses. Le pouvoir d'achat augmente ⇒ société de consommation ⇒ banlieues et voitures.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🏘️</span><span class="card-title">Agglomération urbaine & Étalement urbain <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Banlieue</span><span class="kw">Étalement urbain</span><span class="kw">Transport</span></div>
+    <div class="card-body">
+      <p>La croissance de la population entraîne l'<strong>étalement urbain</strong>. L'État investit dans les infrastructures de transport (routes, autoroutes, métro).</p>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 17 – Fiche 3.1 / DOC 10 – Fiche 3.2 (section B)</span><span class="doc-title">Bouchon de circulation à Montréal, années 1960</span></div>
+        <div class="doc-body"><p>📷 Photo aérienne : dense circulation automobile sur une autoroute montréalaise à plusieurs voies.</p></div>
+        <div class="doc-question">❓ <strong>Q.14 Fiche 3.1 :</strong> Lien de causalité : hausse du revenu → achat de voitures et construction résidentielle → banlieues → pression sur le réseau routier → <strong>congestion / problèmes de circulation</strong>.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 18 – Fiche 3.1 (Section A)</span><span class="doc-title">Un bungalow dans les années 1960</span></div>
+        <div class="doc-body"><p>📷 Photo : un bungalow typique des années 1960, maison unifamiliale de plain-pied.</p></div>
+        <div class="doc-question">❓ Bien de consommation emblématique du développement des banlieues.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 18 – Fiche 3.2 / DOC 16 – Fiche 3.2</span><span class="doc-title">Terres agricoles près des villes / Usine General Motors Boisbriand, 1974</span></div>
+        <div class="doc-body"><p>📷 Photo : terres agricoles jouxtant des zones industrielles et urbaines en périphérie. / Usine General Motors à Boisbriand.</p></div>
+        <div class="doc-question">❓ <strong>Q.14 Fiche 3.2 :</strong> Pourquoi la Loi sur la protection du territoire agricole ? → <strong>L'expansion des agglomérations urbaines menace les bonnes terres agricoles</strong>, concentrées dans la vallée du Saint-Laurent.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+</div>
+
+<!-- ===== RÉVOLUTION TRANQUILLE ===== -->
+<div class="section-title">⚡ La Révolution tranquille (1960–1970)</div>
+<div class="cards-grid">
+
+  <div class="card theme-pol" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">⚡</span><span class="card-title">Révolution tranquille — Vue d'ensemble <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Jean Lesage</span><span class="kw">État-providence</span><span class="kw">Modernisation</span></div>
+    <div class="card-body">
+      <p>Le Parti libéral de <strong>Jean Lesage</strong> engage l'État dans un vaste processus de <strong>modernisation et de laïcisation</strong>. L'<strong>État-providence</strong> prend forme.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        Période <span class="date-badge">1960-1980</span>. Mise en place de mesures économiques et sociales progressistes. Rupture avec le conservatisme duplessiste.
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 15 – Fiche 3.1</span><span class="doc-title">Politiciens du Québec — ordre chronologique</span></div>
+        <div class="doc-body">
+          <p>📷 4 portraits : <strong>Daniel Johnson</strong>, <strong>Maurice Duplessis</strong>, <strong>Jean Lesage</strong>, <strong>Paul Sauvé</strong>.</p>
+          <p style="margin-top:6px">Ordre chronologique comme premiers ministres du Québec :</p>
+          <ul>
+            <li><strong>Duplessis</strong> (Politicien 2) — 1944-1959</li>
+            <li><strong>Paul Sauvé</strong> (Politicien 4) — 1959-1960</li>
+            <li><strong>Jean Lesage</strong> (Politicien 3) — 1960-1966</li>
+            <li><strong>Daniel Johnson</strong> (Politicien 1) — 1966-1968</li>
+          </ul>
+        </div>
+        <div class="doc-question">❓ <strong>Q.13 Fiche 3.1 :</strong> Ordre chronologique = réponse <strong>(b) 2 – 4 – 3 – 1</strong>.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-eco" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">⚡</span><span class="card-title">Nationalisation de l'hydroélectricité & Sociétés d'État <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Hydro-Québec</span><span class="kw">CDPQ</span><span class="kw">Maîtres chez nous</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="160" fill="#dde8f5"/>
+          <!-- Ciel et montagnes -->
+          <polygon points="0,90 60,50 120,70 180,40 240,65 300,45 340,60 340,90" fill="#c8d8e8"/>
+          <!-- Barrage (mur en béton) -->
+          <polygon points="60,90 100,90 115,148 45,148" fill="#8a9aa8"/>
+          <!-- Lignes de béton sur le barrage -->
+          <line x1="62" y1="100" x2="113" y2="100" stroke="#7a8a98" stroke-width="1"/>
+          <line x1="55" y1="115" x2="116" y2="115" stroke="#7a8a98" stroke-width="1"/>
+          <line x1="50" y1="130" x2="116" y2="130" stroke="#7a8a98" stroke-width="1"/>
+          <!-- Réservoir (eau derrière le barrage) -->
+          <path d="M0,90 Q80,82 100,90 L60,90 Z" fill="#4a90c8" opacity=".8"/>
+          <ellipse cx="50" cy="90" rx="55" ry="6" fill="#5aa0d8" opacity=".6"/>
+          <!-- Eau en aval -->
+          <rect x="115" y="140" width="225" height="20" fill="#4a90c8" opacity=".5"/>
+          <path d="M115,145 Q180,138 245,145 Q300,138 340,145" stroke="#6ab0e8" stroke-width="1.5" fill="none"/>
+          <!-- Centrale (bâtiment) -->
+          <rect x="120" y="108" width="55" height="40" fill="#7a8898"/>
+          <rect x="125" y="102" width="45" height="12" fill="#6a7888"/>
+          <!-- Fenêtres centrale -->
+          <rect x="128" y="115" width="12" height="12" rx="1" fill="#f0d860" opacity=".7"/>
+          <rect x="148" y="115" width="12" height="12" rx="1" fill="#f0d860" opacity=".7"/>
+          <!-- Lignes électriques -->
+          <line x1="175" y1="60" x2="175" y2="108" stroke="#555" stroke-width="2"/>
+          <line x1="210" y1="50" x2="210" y2="108" stroke="#555" stroke-width="2"/>
+          <line x1="245" y1="55" x2="245" y2="108" stroke="#555" stroke-width="2"/>
+          <!-- Pylône -->
+          <line x1="175" y1="60" x2="210" y2="50" stroke="#666" stroke-width="1"/>
+          <line x1="210" y1="50" x2="245" y2="55" stroke="#666" stroke-width="1"/>
+          <!-- Villes alimentées (maisons) -->
+          <rect x="270" y="100" width="20" height="18" fill="#d4c8a8"/>
+          <polygon points="270,100 280,90 290,100" fill="#b8904a"/>
+          <rect x="300" y="103" width="18" height="15" fill="#d4c8a8"/>
+          <polygon points="300,103 309,94 318,103" fill="#b8904a"/>
+          <!-- Éclair (électricité) -->
+          <polygon points="202,62 196,80 204,78 198,95 210,74 202,76" fill="#f0e030"/>
+          <!-- Logo Hydro-Quebec simplifié -->
+          <rect x="8" y="8" width="80" height="24" rx="5" fill="#005f9e"/>
+          <text x="48" y="22" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif" font-weight="bold">HYDRO-QUEBEC</text>
+          <!-- Slogan -->
+          <rect x="100" y="8" width="130" height="16" rx="4" fill="rgba(0,0,0,0.25)"/>
+          <text x="165" y="19" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif">Maitres chez nous — 1962</text>
+        </svg>
+        <div class="illus-caption">Nationalisation de l'hydroélectricité · Barrage et centrale — symboles de la Révolution tranquille</div>
+      </div>
+      <p>Le gouvernement prend en charge le développement économique par la <strong>nationalisation de l'hydroélectricité</strong> et la création de sociétés d'État.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Ministère des <strong>Ressources naturelles</strong> <span class="date-badge">1961</span></li>
+          <li><strong>Hydro-Québec</strong> : rachat des compagnies privées (dont Shawinigan Water and Power)</li>
+          <li><strong>Caisse de dépôt et placement</strong> <span class="date-badge">1965</span></li>
+          <li><strong>SOQUEM</strong> : exploitation minière québécoise</li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 12 – Fiche 3.1</span><span class="doc-title">Sociétés d'État créées par le gouvernement Lesage</span></div>
+        <div class="doc-body">
+          <table style="width:100%;border-collapse:collapse;font-size:.78rem">
+            <tr style="background:#fef7e0"><th style="padding:4px;border:1px solid #e8c870;text-align:left">Année</th><th style="padding:4px;border:1px solid #e8c870">Société d'État</th><th style="padding:4px;border:1px solid #e8c870">Objectif</th></tr>
+            <tr><td style="padding:4px;border:1px solid #e8c870">1962</td><td style="padding:4px;border:1px solid #e8c870">SGF</td><td style="padding:4px;border:1px solid #e8c870">Financer des entreprises, stimuler l'emploi</td></tr>
+            <tr style="background:#fffdf5"><td style="padding:4px;border:1px solid #e8c870">1964</td><td style="padding:4px;border:1px solid #e8c870">Sidbec</td><td style="padding:4px;border:1px solid #e8c870">Transformer le minerai de fer de la Côte-Nord au Québec (et non l'exporter brut)</td></tr>
+            <tr><td style="padding:4px;border:1px solid #e8c870">1965</td><td style="padding:4px;border:1px solid #e8c870">SOQUEM</td><td style="padding:4px;border:1px solid #e8c870">Mettre en valeur le potentiel minéral du Québec</td></tr>
+            <tr style="background:#fffdf5"><td style="padding:4px;border:1px solid #e8c870">1965</td><td style="padding:4px;border:1px solid #e8c870">CDPQ</td><td style="padding:4px;border:1px solid #e8c870">Faire fructifier les fonds de retraite + contribuer au développement économique</td></tr>
+          </table>
+        </div>
+        <div class="doc-question">❓ <strong>Critère 3 Fiche 3.1 (schéma) :</strong> Aspect économique → Sociétés d'État → Hydro-Québec + Caisse de dépôt et placement.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 1 – Section B Fiche 3.1 / DOC 9 – Fiche 3.2</span><span class="doc-title">Construction du siège social d'Hydro-Québec, 1962</span></div>
+        <div class="doc-body"><p>📷 Photo : chantier de construction d'un grand immeuble à Montréal (futur siège d'Hydro-Québec), 1962.</p></div>
+        <div class="doc-question">❓ <strong>Q.9 Fiche 3.2 :</strong> Ce document se situe <strong>avant</strong> l'annonce du « projet du siècle » par Bourassa. Illustre l'affirmation économique du Québec pendant la Révolution tranquille.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 11-12-13 – Fiche 3.2</span><span class="doc-title">Projets hydroélectriques de la Baie-James</span></div>
+        <div class="doc-body">
+          <p>📷 Doc 11 : évacuateur de crues de l'aménagement La Grande-4.</p>
+          <p>📷 Doc 12 : construction du barrage Daniel-Johnson, début années 1960.</p>
+          <p>🗺️ Doc 13 : carte des centrales hydroélectriques de la Baie-James (La Grande-1, 2, 3, 4, Robert-Bourassa, Eastmain…).</p>
+        </div>
+        <div class="doc-question">❓ <strong>Q.9 Fiche 3.2 :</strong> Doc 12 = <strong>AVANT</strong> (barrage début années 1960). Doc 11 et 13 = <strong>APRÈS</strong> l'annonce du projet du siècle par Bourassa (années 1970).</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-cult" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">📚</span><span class="card-title">Réforme de l'éducation — Rapport Parent <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Rapport Parent 1963</span><span class="kw">CÉGEP</span><span class="kw">Gratuité</span></div>
+    <div class="card-body">
+      <p>Création du <strong>ministère de l'Éducation</strong> et réforme complète du système scolaire.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément — Rapport Parent 1963</div>
+        <ul>
+          <li><strong>Laïcisation</strong> et gratuité de l'éducation</li>
+          <li>Scolarisation obligatoire jusqu'à <strong>15 ans</strong></li>
+          <li>Écoles <strong>polyvalentes</strong>, <strong>CÉGEP</strong>, réseau UQ</li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 19 – Fiche 3.1 / DOC 10 – Section C Fiche 3.2</span><span class="doc-title">Rapport de la Commission royale sur l'enseignement, 1963</span></div>
+        <div class="doc-body">
+          <blockquote>« Le droit de chacun à l'instruction, idée moderne, réclame que l'on dispense l'enseignement à tous les enfants sans distinction de classe, de race, de croyance ; et cela de l'école primaire jusqu'à l'université. L'éducation n'est plus, comme autrefois, le privilège d'une élite. »</blockquote>
+          <div class="source">— Rapport Parent, 1963</div>
+        </div>
+        <div class="doc-question">❓ <strong>Q.11 Fiche 3.1 :</strong> Ce doc = <strong>cause de la création du ministère de l'Éducation</strong>. Critère 4 Fiche 3.2 : changement dans le rôle de l'État (éducation).</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 7 – Section C Fiche 3.2</span><span class="doc-title">L'Université du Québec à Rimouski, 1973</span></div>
+        <div class="doc-body"><p>📷 Photo : bâtiment de l'UQAR (Université du Québec à Rimouski), 1973.</p></div>
+        <div class="doc-question">❓ Illustre la démocratisation de l'accès à l'enseignement supérieur et la création du réseau UQ suite au rapport Parent.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🏥</span><span class="card-title">Réformes en santé <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Assurance hospitalisation</span><span class="kw">RAMQ 1970</span><span class="kw">Laïcisation</span></div>
+    <div class="card-body">
+      <p>L'État prend en charge la santé, auparavant gérée par l'Église.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li><strong>Loi des hôpitaux</strong> <span class="date-badge">1962</span> : gestion hospitalière par l'État, conseils de médecins (et non plus religieux)</li>
+          <li>Assurance hospitalisation (Lesage) : hôpitaux remboursés</li>
+          <li><strong>RAMQ</strong> <span class="date-badge">1970</span> (Bourassa) : services médicaux sans frais</li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 14 – Fiche 3.1 / DOC 2 – Section C Fiche 3.2</span><span class="doc-title">Graphique : Coût des soins de santé, 1961 vs 1966</span></div>
+        <div class="chart-wrap">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="200" height="130" fill="#fffdf5" rx="4"/>
+            <line x1="40" y1="10" x2="40" y2="100" stroke="#888" stroke-width="1.5"/>
+            <line x1="40" y1="100" x2="185" y2="100" stroke="#888" stroke-width="1.5"/>
+            <text x="36" y="103" text-anchor="end" font-size="8" fill="#666">0</text>
+            <text x="36" y="72" text-anchor="end" font-size="8" fill="#666">100</text>
+            <text x="36" y="44" text-anchor="end" font-size="8" fill="#666">200</text>
+            <text x="36" y="16" text-anchor="end" font-size="8" fill="#666">350</text>
+            <line x1="40" y1="72" x2="185" y2="72" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <line x1="40" y1="44" x2="185" y2="44" stroke="#e0ddd8" stroke-dasharray="3,3"/>
+            <!-- 1961 ≈ 130M, 1966 ≈ 320M -->
+            <rect x="55" y="63" width="50" height="37" fill="#6b2a7a" rx="3"/>
+            <rect x="120" y="10" width="50" height="90" fill="#6b2a7a" rx="3"/>
+            <text x="80" y="115" text-anchor="middle" font-size="9" fill="#555">1961</text>
+            <text x="145" y="115" text-anchor="middle" font-size="9" fill="#555">1966</text>
+            <text x="80" y="58" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">~130M$</text>
+            <text x="145" y="5" text-anchor="middle" font-size="9" fill="#6b2a7a" font-weight="bold">~320M$</text>
+            <text x="110" y="128" text-anchor="middle" font-size="8" fill="#888">dépenses en santé (millions $)</text>
+          </svg>
+        </div>
+        <div class="doc-question">❓ <strong>Q.11 Fiche 3.1 :</strong> Ce doc = <strong>conséquence du programme d'assurance hospitalisation</strong> (les dépenses de l'État en santé augmentent fortement entre 1961 et 1966).</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 15 – Fiche 3.2 / DOC 6 – Section C Fiche 3.2</span><span class="doc-title">Hôpital Sacré-Cœur 1966 / Religieuse et infirmière laïque</span></div>
+        <div class="doc-body">
+          <p>📷 Doc 15 : patientes dans une chambre d'hôpital moderne, 1966.</p>
+          <p>📷 Doc C-6 : une religieuse et une infirmière laïque côte à côte au chevet d'un patient → transition entre gestion religieuse et laïque des hôpitaux.</p>
+        </div>
+        <div class="doc-question">❓ <strong>Q.8 Fiche 3.2 :</strong> Deux changements dans la santé : (1) Loi des hôpitaux 1962 → gestion par médecins (non religieux) ; (2) RAMQ 1970 → soins gratuits pour tous.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 1 – Section C Fiche 3.2</span><span class="doc-title">Logo de la RAMQ</span></div>
+        <div class="doc-body"><p>🖼️ Logo officiel de la Régie de l'assurance maladie du Québec avec une carte d'assurance maladie fictive.</p></div>
+        <div class="doc-question">❓ Illustre la création de l'assurance maladie (RAMQ) par le gouvernement Bourassa en 1970 = changement dans le rôle social de l'État.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">♀️</span><span class="card-title">Féminisme & Droits des femmes <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Loi 16 – 1964</span><span class="kw">Avortement</span><span class="kw">Capacité juridique</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="140" fill="#f8eef5"/>
+          <!-- Frise chronologique droits des femmes -->
+          <!-- Ligne du temps -->
+          <line x1="20" y1="75" x2="320" y2="75" stroke="#c070a0" stroke-width="2.5"/>
+          <polygon points="320,75 312,70 312,80" fill="#c070a0"/>
+          <!-- Événements -->
+          <!-- 1940 : droit de vote QC -->
+          <circle cx="45" cy="75" r="8" fill="#9a3878"/>
+          <rect x="25" y="88" width="40" height="22" rx="4" fill="#9a3878"/>
+          <text x="45" y="98" text-anchor="middle" font-size="7.5" fill="white" font-family="sans-serif" font-weight="bold">1940</text>
+          <text x="45" y="108" text-anchor="middle" font-size="7" fill="#f5c8e8" font-family="sans-serif">Vote QC</text>
+          <line x1="45" y1="67" x2="45" y2="25" stroke="#9a3878" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <text x="45" y="20" text-anchor="middle" font-size="7.5" fill="#9a3878" font-family="sans-serif">Droit de vote</text>
+          <text x="45" y="30" text-anchor="middle" font-size="7" fill="#b070a0" font-family="sans-serif">aux Quebecoises</text>
+          <!-- 1964 : Loi 16 -->
+          <circle cx="130" cy="75" r="8" fill="#c04080"/>
+          <rect x="110" y="88" width="40" height="22" rx="4" fill="#c04080"/>
+          <text x="130" y="98" text-anchor="middle" font-size="7.5" fill="white" font-family="sans-serif" font-weight="bold">1964</text>
+          <text x="130" y="108" text-anchor="middle" font-size="7" fill="#f5c8e8" font-family="sans-serif">Loi 16</text>
+          <line x1="130" y1="67" x2="130" y2="25" stroke="#c04080" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <text x="130" y="20" text-anchor="middle" font-size="7.5" fill="#c04080" font-family="sans-serif">Capacite juridique</text>
+          <text x="130" y="30" text-anchor="middle" font-size="7" fill="#c070a0" font-family="sans-serif">femme mariee</text>
+          <!-- 1969 : avortement/contraception -->
+          <circle cx="215" cy="75" r="8" fill="#d05070"/>
+          <rect x="195" y="88" width="40" height="22" rx="4" fill="#d05070"/>
+          <text x="215" y="98" text-anchor="middle" font-size="7.5" fill="white" font-family="sans-serif" font-weight="bold">1969</text>
+          <text x="215" y="108" text-anchor="middle" font-size="7" fill="#f5c8e8" font-family="sans-serif">Contraception</text>
+          <line x1="215" y1="67" x2="215" y2="25" stroke="#d05070" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <text x="215" y="20" text-anchor="middle" font-size="7.5" fill="#d05070" font-family="sans-serif">Legalisation</text>
+          <text x="215" y="30" text-anchor="middle" font-size="7" fill="#d07090" font-family="sans-serif">avortement therapeutique</text>
+          <!-- 1975 : Charte -->
+          <circle cx="295" cy="75" r="8" fill="#e07050"/>
+          <rect x="275" y="88" width="40" height="22" rx="4" fill="#e07050"/>
+          <text x="295" y="98" text-anchor="middle" font-size="7.5" fill="white" font-family="sans-serif" font-weight="bold">1975</text>
+          <text x="295" y="108" text-anchor="middle" font-size="7" fill="#fff0e8" font-family="sans-serif">Charte QC</text>
+          <line x1="295" y1="67" x2="295" y2="25" stroke="#e07050" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <text x="295" y="20" text-anchor="middle" font-size="7.5" fill="#e07050" font-family="sans-serif">Droits et libertes</text>
+          <text x="295" y="30" text-anchor="middle" font-size="7" fill="#d08070" font-family="sans-serif">de la personne</text>
+          <!-- Symbole féminisme -->
+          <circle cx="20" cy="75" r="10" fill="none" stroke="#9a3878" stroke-width="1.5"/>
+          <line x1="20" y1="85" x2="20" y2="95" stroke="#9a3878" stroke-width="1.5"/>
+          <line x1="14" y1="91" x2="26" y2="91" stroke="#9a3878" stroke-width="1.5"/>
+          <!-- Label bas -->
+          <rect x="100" y="118" width="140" height="14" rx="4" fill="rgba(192,64,128,0.15)"/>
+          <text x="170" y="128" text-anchor="middle" font-size="8" fill="#9a3878" font-family="sans-serif" font-weight="bold">Conquete progressive des droits</text>
+        </svg>
+        <div class="illus-caption">Chronologie des droits des femmes au Québec · 1940 → 1975</div>
+      </div>
+      <p><strong>Marie-Claire Kirkland-Casgrain</strong> fait adopter la <strong>Loi 16</strong> sur la capacité juridique de la femme mariée.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Loi 16 <span class="date-badge">1964</span> : permet de signer des contrats sans autorisation du mari</li>
+          <li>Légalisation du <strong>divorce</strong> <span class="date-badge">1968</span></li>
+          <li>Légalisation de l'<strong>avortement thérapeutique</strong> <span class="date-badge">1969</span></li>
+          <li>Autorisation de la <strong>pilule contraceptive</strong> <span class="date-badge">1969</span></li>
+          <li><strong>Charte québécoise des droits et libertés</strong> <span class="date-badge">1975</span></li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 8 – Section C Fiche 3.2</span><span class="doc-title">La Loi 16 – Capacité juridique de la femme mariée, 1964</span></div>
+        <div class="doc-body">
+          <blockquote>« 1964 – La ministre libérale Claire Kirkland-Casgrain fait adopter par l'Assemblée législative la Loi 16 qui apporte d'importantes modifications au Code civil. Les changements apportés donnent aux femmes mariées la pleine capacité juridique d'exercer une profession et de gérer leurs propres biens. »</blockquote>
+          <div class="source">— Bilan du siècle, Université de Sherbrooke, 2022</div>
+        </div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 3A – Section C Fiche 3.2</span><span class="doc-title">Humanae Vitae — L'Église contre l'avortement, 1968</span></div>
+        <div class="doc-body">
+          <blockquote>« […] est absolument à exclure, comme moyen licite de régulation des naissances, l'interruption directe du processus de génération déjà engagé, et surtout l'avortement directement voulu et procuré, même pour des raisons thérapeutiques. »</blockquote>
+          <div class="source">— Lettre encyclique Humanae Vitae, Pape Paul VI, 1968</div>
+        </div>
+        <div class="doc-question">❓ Illustre la position de l'Église catholique s'opposant à l'avortement — en opposition avec les revendications féministes (Doc 3B : manifestation pour le droit à l'avortement).</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 21 – Fiche 3.2 / DOC 9 – Section C</span><span class="doc-title">Revendications féministes / Projet de loi omnibus 1967 (Trudeau)</span></div>
+        <div class="doc-body">
+          <p>📷 Doc 21 : manifestantes tenant une banderole « Accès à l'égalité ».</p>
+          <p style="margin-top:5px">📷 Doc C-9 : Trudeau en conférence de presse — citation : <em>« L'État n'a rien à faire dans les chambres à coucher de la nation. »</em></p>
+        </div>
+        <div class="doc-question">❓ <strong>Q.11 Fiche 3.2 :</strong> Le document 21 est associé au mouvement du <strong>féminisme</strong>. Critère 4 : changement dans les mœurs → les femmes revendiquent leurs droits et obtiennent la capacité juridique.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-cult" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🌐</span><span class="card-title">Effervescence culturelle — Expo 67 <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Expo 67</span><span class="kw">Identité québécoise</span><span class="kw">International</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 155" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="155" fill="#e8f0f8"/>
+          <!-- Ciel bleu Expo -->
+          <rect width="340" height="90" fill="#c0d8f0"/>
+          <!-- Geodesic dome (pavillon USA / biosphère) -->
+          <circle cx="80" cy="72" r="50" fill="none" stroke="#4a8ad0" stroke-width="2" opacity=".6"/>
+          <!-- Triangles géodésiques simplifié -->
+          <polygon points="80,22 55,62 105,62" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <polygon points="80,22 105,62 130,42" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <polygon points="80,22 30,42 55,62" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <polygon points="55,62 30,42 30,90" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <polygon points="105,62 130,42 130,90" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <polygon points="55,62 30,90 80,120" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <polygon points="105,62 80,120 130,90" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <polygon points="55,62 105,62 80,120" fill="none" stroke="#4a8ad0" stroke-width="1.2"/>
+          <!-- Fill semi-transparent -->
+          <circle cx="80" cy="72" r="49" fill="#b8d8f0" opacity=".3"/>
+          <!-- Pavillon du Quebec (structure pyramidale) -->
+          <polygon points="190,90 240,45 290,90" fill="#d4504a"/>
+          <rect x="195" y="90" width="90" height="45" fill="#e86858"/>
+          <!-- Fenêtres pavillon QC -->
+          <rect x="210" y="100" width="16" height="14" rx="2" fill="#f8f0a0" opacity=".8"/>
+          <rect x="252" y="100" width="16" height="14" rx="2" fill="#f8f0a0" opacity=".8"/>
+          <!-- Drapeaux sur les pavillons -->
+          <rect x="236" y="28" width="2" height="20" fill="#555"/>
+          <rect x="238" y="28" width="14" height="10" fill="#002395"/>
+          <!-- Logo expo67 simplifié (bonhomme allumette) -->
+          <circle cx="168" cy="30" r="9" fill="#e8504a"/>
+          <line x1="168" y1="39" x2="168" y2="60" stroke="#e8504a" stroke-width="2.5"/>
+          <line x1="158" y1="48" x2="178" y2="48" stroke="#e8504a" stroke-width="2.5"/>
+          <line x1="168" y1="60" x2="158" y2="74" stroke="#e8504a" stroke-width="2.5"/>
+          <line x1="168" y1="60" x2="178" y2="74" stroke="#e8504a" stroke-width="2.5"/>
+          <!-- Eau (fleuve Saint-Laurent) -->
+          <rect x="0" y="132" width="340" height="23" fill="#5090c8" opacity=".7"/>
+          <path d="M0,138 Q85,132 170,138 Q255,132 340,138" stroke="#70b0e0" stroke-width="1.5" fill="none"/>
+          <!-- Sol -->
+          <rect x="0" y="120" width="340" height="14" fill="#8aaa70"/>
+          <!-- Titre -->
+          <rect x="8" y="8" width="100" height="18" rx="5" fill="#e8504a"/>
+          <text x="58" y="20" text-anchor="middle" font-size="10" fill="white" font-family="sans-serif" font-weight="bold">EXPO 67</text>
+          <text x="120" y="18" font-size="9" fill="#336699" font-family="sans-serif">Montreal — Canada</text>
+        </svg>
+        <div class="illus-caption">L'Exposition universelle de 1967 · Le Québec s'affirme sur la scène internationale</div>
+      </div>
+      <p>L'<strong>Expo 67</strong> permet au Québec de s'affirmer sur la scène internationale. Artistes engagés : Michel Tremblay, Gilles Vigneault.</p>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 22 – Fiche 3.2 / DOC 11 – Section B Fiche 3.1</span><span class="doc-title">L'Exposition universelle de 1967 / Grand Théâtre de Québec</span></div>
+        <div class="doc-body">
+          <p>📷 Doc 22 : affiche/foule de l'Expo 67 avec le logo caractéristique.</p>
+          <p>📷 Doc 11 : construction du Grand Théâtre de Québec, 1968.</p>
+        </div>
+        <div class="doc-question">❓ <strong>Q.7 Fiche 3.2 :</strong> Le document 22 témoigne d'une <strong>plus grande ouverture sur le monde</strong> de la société québécoise. Critère 3 Fiche 3.1 : aspect culturel → effervescence culturelle.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-pol" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">📜</span><span class="card-title">Affirmation politique — Paul Gérin-Lajoie (1965) <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Rôle international</span><span class="kw">Affirmation politique</span><span class="kw">État libéral</span></div>
+    <div class="card-body">
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 13 – Fiche 3.1</span><span class="doc-title">Allocution de Paul Gérin-Lajoie, 1965</span></div>
+        <div class="doc-body">
+          <blockquote>« La multiplication des échanges de toutes sortes entre les pays a rendu nécessaire l'intervention directe ou indirecte de l'État moderne afin de faire de ces échanges l'un des éléments essentiels du progrès, de la compréhension et de la paix entre les peuples. Dans plusieurs domaines, qui ont maintenant acquis une importance internationale, le Québec veut jouer un rôle direct […]. »</blockquote>
+          <div class="source">— Paul Gérin-Lajoie, 1965</div>
+        </div>
+        <div class="doc-question">❓ <strong>Q.10 Fiche 3.1 :</strong> Ce doc illustre l'<strong>affirmation politique</strong> du Québec (parmi : affirmation culturelle = Doc 11, affirmation économique = Doc 12).</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">📉</span><span class="card-title">Laïcisation — Déclin du clergé <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Laïcisation</span><span class="kw">Prêtres</span><span class="kw">Déconfessionnalisation</span></div>
+    <div class="card-body">
+      <p>La laïcisation de la société québécoise entraîne un fort déclin de l'influence et des effectifs de l'Église catholique.</p>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 4 – Fiche 3.2</span><span class="doc-title">Graphique : Nombre de prêtres en 1960 et 1981</span></div>
+        <div class="chart-wrap">
+          <svg viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="130" fill="#fffdf5" rx="4"/>
+            <line x1="35" y1="10" x2="35" y2="100" stroke="#888" stroke-width="1.5"/>
+            <line x1="35" y1="100" x2="170" y2="100" stroke="#888" stroke-width="1.5"/>
+            <text x="31" y="103" text-anchor="end" font-size="8" fill="#666">0</text>
+            <text x="31" y="57" text-anchor="end" font-size="8" fill="#666">4000</text>
+            <text x="31" y="12" text-anchor="end" font-size="8" fill="#666">8500</text>
+            <!-- 1960 ≈ 8500, 1981 ≈ 4000 -->
+            <rect x="50" y="11" width="45" height="89" fill="#6b2a7a" rx="3"/>
+            <rect x="110" y="57" width="45" height="43" fill="#b07fc0" rx="3"/>
+            <text x="72" y="115" text-anchor="middle" font-size="9" fill="#555">1960</text>
+            <text x="132" y="115" text-anchor="middle" font-size="9" fill="#555">1981</text>
+            <text x="72" y="7" text-anchor="middle" font-size="9" fill="#6b2a7a" font-weight="bold">~8 500</text>
+            <text x="132" y="53" text-anchor="middle" font-size="9" fill="#6b2a7a" font-weight="bold">~4 000</text>
+            <text x="95" y="128" text-anchor="middle" font-size="8" fill="#888">nombre de prêtres</text>
+          </svg>
+        </div>
+        <div class="doc-question">❓ <strong>Q.6 Fiche 3.2 :</strong> Conséquence de la laïcisation sur les effectifs de l'Église = <strong>le nombre de prêtres et de religieux chute de façon importante</strong>.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+</div>
+
+<!-- ===== CRISES ET DÉFIS ===== -->
+<div class="section-title">🔥 Crises, défis sociaux et néonationalisme</div>
+<div class="cards-grid">
+
+  <div class="card theme-pol" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">💣</span><span class="card-title">Crise d'Octobre 1970 <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">FLQ</span><span class="kw">Mesures de guerre</span><span class="kw">Laporte</span></div>
+    <div class="card-body">
+      <p>Le <strong>FLQ</strong> recourt à la violence pour obtenir l'indépendance du Québec.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Enlèvement du diplomate britannique <strong>James Cross</strong> et du ministre <strong>Pierre Laporte</strong> (mort dans un coffre de voiture)</li>
+          <li>FLQ veut la lecture de son manifeste à la TV</li>
+          <li>Loi sur les mesures de guerre : <strong>arrestations sans mandat + suspension des libertés civiles</strong></li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 4 – Section B Fiche 3.2</span><span class="doc-title">Effervescence des mouvements étudiants, années 1960</span></div>
+        <div class="doc-body">
+          <blockquote>« […] On voulait protester contre tout, contre la pauvreté, le capitalisme, contre toute forme d'injustice, de discrimination [et] d'exploitation […]. »</blockquote>
+          <div class="source">— Témoignage de Lise Balcer, automne 1968</div>
+        </div>
+        <div class="doc-question">❓ Illustre le changement des mœurs : les jeunes contestent le système établi (critère 4, changement dans les mœurs des Québécois).</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-soc" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🪧</span><span class="card-title">Front commun syndical 1972 <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">CEQ / CSN / FTQ</span><span class="kw">Grève illimitée</span><span class="kw">Formule Rand</span></div>
+    <div class="card-body">
+      <p>Les trois grandes centrales syndicales déclenchent une <strong>grève illimitée</strong> des employés de l'État.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Revendications : meilleures conditions de travail + <strong>augmentation des salaires</strong></li>
+          <li>Sous Bourassa : <strong>formule Rand</strong> <span class="date-badge">1977</span> = prélèvement des cotisations syndicales sur la paye</li>
+        </ul>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-eco" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🛢️</span><span class="card-title">Crise du pétrole 1973 & Grands chantiers <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">OPEP</span><span class="kw">Inflation</span><span class="kw">Baie-James</span></div>
+    <div class="card-body">
+      <p>L'<strong>OPEP</strong> augmente le prix du baril ⇒ fin des Trente Glorieuses, inflation. Bourassa lance de grands chantiers pour stimuler l'emploi : <strong>Baie-James</strong>, Jeux olympiques 1976, métro.</p>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 14 – Fiche 3.2</span><span class="doc-title">Claude Castonguay, 1971</span></div>
+        <div class="doc-body"><p>📷 Photo : Claude Castonguay (architecte de l'assurance maladie) examinant un nourrisson. Illustre la mise en place du programme de santé Bourassa (RAMQ 1970).</p></div>
+        <div class="doc-question">❓ Illustre les réformes en santé du gouvernement Bourassa.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-pol" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🍁</span><span class="card-title">Néonationalisme & Parti québécois (1976) <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">René Lévesque</span><span class="kw">Référendum</span><span class="kw">Souveraineté</span></div>
+    <div class="card-body">
+      <div class="illus-wrap">
+        <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
+          <rect width="340" height="150" fill="#f5f0e8"/>
+          <!-- Affiche électorale stylisée -->
+          <rect x="15" y="10" width="148" height="130" rx="6" fill="#1a3a6a"/>
+          <!-- Logo PQ simplifié -->
+          <circle cx="89" cy="42" r="24" fill="#3060a8"/>
+          <!-- Fleur de lys au centre -->
+          <text x="89" y="50" text-anchor="middle" font-size="28" fill="white" font-family="serif">&#x269C;</text>
+          <!-- Texte affiche PQ -->
+          <text x="89" y="82" text-anchor="middle" font-size="10" fill="white" font-family="sans-serif" font-weight="bold">PARTI</text>
+          <text x="89" y="95" text-anchor="middle" font-size="10" fill="white" font-family="sans-serif" font-weight="bold">QUEBECOIS</text>
+          <rect x="30" y="102" width="118" height="2" fill="#5080c0"/>
+          <text x="89" y="118" text-anchor="middle" font-size="9" fill="#a0c0e8" font-family="sans-serif">Novembre 1976</text>
+          <text x="89" y="132" text-anchor="middle" font-size="8" fill="#8aabe0" font-family="sans-serif">Rene Levesque</text>
+          <!-- Urne -->
+          <rect x="196" y="55" width="55" height="40" rx="4" fill="#8a8080"/>
+          <rect x="189" y="50" width="69" height="12" rx="3" fill="#9a9090"/>
+          <!-- Fente urne -->
+          <rect x="218" y="44" width="11" height="6" rx="1" fill="#555"/>
+          <!-- Bulletin qui entre dans l'urne -->
+          <rect x="220" y="34" width="16" height="12" rx="2" fill="white" stroke="#aaa" stroke-width="0.8"/>
+          <line x1="223" y1="38" x2="233" y2="38" stroke="#888" stroke-width="1"/>
+          <line x1="223" y1="42" x2="230" y2="42" stroke="#888" stroke-width="1"/>
+          <!-- Victoire : confettis -->
+          <circle cx="270" cy="20" r="4" fill="#d4504a"/>
+          <circle cx="290" cy="30" r="3" fill="#3060a8"/>
+          <circle cx="310" cy="18" r="4" fill="#f0c030"/>
+          <circle cx="280" cy="45" r="3" fill="#50a060"/>
+          <circle cx="300" cy="12" r="3" fill="#d4504a"/>
+          <circle cx="318" cy="35" r="4" fill="#3060a8"/>
+          <circle cx="255" cy="38" r="3" fill="#f0c030"/>
+          <!-- Banderole victoire -->
+          <path d="M180,75 Q220,60 260,70 Q290,75 330,65" stroke="#d4a030" stroke-width="2" fill="none"/>
+          <text x="255" y="62" text-anchor="middle" font-size="9" fill="#d4a030" font-family="sans-serif" font-weight="bold">VICTOIRE!</text>
+          <!-- Foule (silhouettes) -->
+          <ellipse cx="200" cy="130" rx="8" ry="14" fill="#3a3028"/>
+          <circle cx="200" cy="112" r="8" fill="#3a3028"/>
+          <ellipse cx="225" cy="132" rx="8" ry="14" fill="#4a4038"/>
+          <circle cx="225" cy="114" r="8" fill="#4a4038"/>
+          <ellipse cx="250" cy="130" rx="8" ry="14" fill="#3a3028"/>
+          <circle cx="250" cy="112" r="8" fill="#3a3028"/>
+          <ellipse cx="275" cy="132" rx="8" ry="14" fill="#5a5048"/>
+          <circle cx="275" cy="114" r="8" fill="#5a5048"/>
+          <ellipse cx="300" cy="130" rx="8" ry="14" fill="#3a3028"/>
+          <circle cx="300" cy="112" r="8" fill="#3a3028"/>
+          <!-- Sol -->
+          <rect x="0" y="142" width="340" height="8" fill="#8aaa70"/>
+        </svg>
+        <div class="illus-caption">Élection du Parti québécois · René Lévesque — novembre 1976</div>
+      </div>
+      <p>Le <strong>Parti québécois</strong> de René Lévesque est élu en 1976 avec la promesse d'un référendum sur l'indépendance.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément — Néonationalisme</div>
+        <ul>
+          <li>Rupture avec le clérico-nationalisme : identité fondée sur le <strong>territoire québécois</strong> et la <strong>langue française</strong></li>
+          <li>L'État doit être <strong>interventionniste</strong> (économie, social, culture)</li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 17 – Fiche 3.2</span><span class="doc-title">Slogans électoraux provinciaux, 1973</span></div>
+        <div class="doc-body">
+          <p><strong>A — Union nationale :</strong> « …Pour l'avenir d'un Québec fort ! Votez Union nationale »</p>
+          <p><strong>B — Parti québécois :</strong> « J'ai le goût du Québec » (fleur de lys)</p>
+          <p><strong>C — Parti libéral :</strong> « Non au séparatisme ! Non au retour en arrière ! Oui au progrès dans la paix ! Oui à un gouvernement libéral fort ! »</p>
+        </div>
+        <div class="doc-question">❓ <strong>Q.12 Fiche 3.2 :</strong> Le <strong>Parti libéral</strong> présente une orientation différente : il s'oppose au séparatisme, tandis que l'UN et le PQ affichent une orientation nationaliste.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 23 – Fiche 3.2</span><span class="doc-title">La victoire du Parti québécois, 1976</span></div>
+        <div class="doc-body"><p>📷 Photo : René Lévesque triomphant au micro lors de la soirée électorale de 1976, entouré de militants.</p></div>
+        <div class="doc-question">❓ <strong>Q.13 Fiche 3.2 :</strong> Changement en 1976 = <strong>l'élection d'un parti souverainiste à la tête du Québec</strong>.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-cult" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🗣️</span><span class="card-title">Débats linguistiques — Lois 63, 22, 101 <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Loi 101</span><span class="kw">Français officiel</span><span class="kw">Milieu de travail</span></div>
+    <div class="card-body">
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément — Progression des lois</div>
+        <ul>
+          <li><strong>Loi 63</strong> : choix de la langue d'enseignement par les parents</li>
+          <li><strong>Loi 22</strong> : test de français obligatoire + français = langue officielle du Québec</li>
+          <li><strong>Loi 101</strong> <span class="date-badge">1977</span> : école anglaise seulement si parent anglophone + français obligatoire au travail + affichage commercial</li>
+          <li>⇒ Départ de nombreux Anglo-Québécois</li>
+        </ul>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+  <div class="card theme-pol" onclick="toggleCard(this)">
+    <div class="card-header"><span class="card-icon">🪶</span><span class="card-title">Communautés autochtones & Convention Baie-James <span class="open-indicator">▼</span></span></div>
+    <div class="card-keywords"><span class="kw">Droits ancestraux</span><span class="kw">Pensionnats</span><span class="kw">Cris et Inuits</span></div>
+    <div class="card-body">
+      <p>Les peuples autochtones revendiquent une <strong>plus grande autonomie</strong> et des compensations pour l'exploitation de leurs ressources.</p>
+      <div class="annotation">
+        <div class="annotation-label">✏️ Complément</div>
+        <ul>
+          <li>Reconnaissance des <strong>droits ancestraux</strong> <span class="date-badge">1973</span></li>
+          <li>Bureau des affaires autochtones (sous Trudeau)</li>
+          <li>Pensionnats autochtones ⇒ déclin des langues autochtones</li>
+        </ul>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 3 – Fiche 3.2 / DOC 20 – Fiche 3.1</span><span class="doc-title">Convention de la Baie-James, 1975 / Carte relocalisation Inuit</span></div>
+        <div class="doc-body">
+          <blockquote>« En considération et sous réserve des droits, avantages et privilèges accordés aux Cris [Eeyou] de la Baie James et aux Inuits [Inuit] du Québec, les Cris [Eeyou] […] consentent, par les présentes, à régler hors cour toutes les poursuites judiciaires relatives au projet de la Baie James […]. »</blockquote>
+          <div class="source">— Convention de la Baie-James et du Nord québécois, 1975</div>
+          <p style="margin-top:6px">🗺️ Doc 20 : carte montrant la délocalisation d'Inuit depuis Inukjuak vers Craig Harbour, Grise Fiord et Resolute Bay dans les années 1950.</p>
+        </div>
+        <div class="doc-question">❓ <strong>Q.10 Fiche 3.2 :</strong> Conséquence de la Convention Baie-James = les Autochtones abandonnent leurs procédures judiciaires pour arrêter les travaux hydroélectriques. Q.9 Fiche 3.1 : but de la relocalisation = assurer la <strong>souveraineté canadienne dans l'Arctique</strong>.</div>
+      </div>
+      <div class="doc-block">
+        <div class="doc-header"><span class="doc-num">DOC 8 – Fiche 3.2</span><span class="doc-title">Salle de classe d'un pensionnat indien au Québec</span></div>
+        <div class="doc-body"><p>📷 Photo : élèves autochtones en rangées dans une salle de classe d'un pensionnat, supervisés par une religieuse.</p></div>
+        <div class="doc-question">❓ <strong>Q.4 Fiche 3.2 :</strong> Conséquence de l'imposition de l'enseignement du français dans les pensionnats = <strong>le déclin des langues autochtones</strong>.</div>
+      </div>
+    </div>
+    <span class="revision-hint">Cliquez pour révéler le contenu</span>
+  </div>
+
+</div>
+
+<!-- EXAM BOX -->
+<div class="exam-box">
+  <h3>⭐ Points clés aux examens — Critères 2, 3 et 4</h3>
+  <ul>
+    <li><strong>Critère 2 — Situer :</strong> Fleurdelisé 1948, grève amiante 1949, Lesage 1960, rapport Parent 1963, Loi 16 1964, Expo 67, Crise Octobre 1970, Loi 101 1977. Terre-Neuve rejoint la Confédération en 1949 = lettre J sur la carte.</li>
+    <li><strong>Critère 2 — Mettre en relation :</strong> Doc 3 = contestation artistes / Doc 5 = intellectuels / Doc 3 (fiche 3.1) = syndicats. Affirmation culturelle = Doc 11 / politique = Doc 13 / économique = Doc 12.</li>
+    <li><strong>Critère 2 — Causes/conséquences :</strong> Exploitation Côte-Nord → installations portuaires + chemins de fer. Laïcisation → chute du nombre de prêtres. Étalement urbain → Loi protection territoire agricole. Électrification rurale → modernisation fermes. Télévision → influence culture américaine.</li>
+    <li><strong>Critère 3 — Schéma duplessiste :</strong> Objet = Période duplessiste/Après-guerre / Aspect politique : Duplessis → libéralisme éco. / cléricalism / autonomie → contesté par syndicats + artistes (Refus global). Aspect social : société de consommation → télévision + automobile.</li>
+    <li><strong>Critère 3 — Schéma Révolution tranquille :</strong> Objet = Révolution tranquille / Aspect économique : Sociétés d'État → Hydro-Québec + CDPQ. Aspect culturel : effervescence culturelle → Gilles Vigneault + Michel Tremblay.</li>
+    <li><strong>Critère 4 — Échanges commerciaux USA :</strong> Cause = Guerre froide (course aux armements, demande d'acier) OU GATT. Conséquence = développement Côte-Nord/Nouveau-Québec + villes Schefferville/Gagnon + voie maritime.</li>
+    <li><strong>Critère 4 — Révolution tranquille :</strong> Changement mœurs = affranchissement des cadres traditionnels (déclin de l'Église, féminisme, homosexualité décriminalisée). Changement rôle État = interventionnisme (éducation + santé).</li>
+  </ul>
+</div>
+
+</main>
+
+<script>
+const tlData = {
+  t1:{title:"1949 — Grève de l'amiante",body:"<p>Premier grand conflit ouvrier. Duplessis appuie le patronat et s'oppose aux syndicats. La police provinciale intervient contre les manifestants. Symbole du besoin de changement dans la société québécoise.</p>"},
+  t2:{title:"1960 — Élection de Jean Lesage",body:"<p>Le Parti libéral remplace l'Union nationale. Début de la Révolution tranquille. L'État s'engage dans la modernisation et la laïcisation. Slogan : « Maîtres chez nous ».</p>"},
+  t3:{title:"1962 — Nationalisation de l'électricité",body:"<p>Lesage rachète les compagnies privées d'électricité (dont Shawinigan Water and Power) et les intègre à Hydro-Québec. Symbole de la reprise en main économique. Création du ministère des Ressources naturelles (1961).</p>"},
+  t4:{title:"1963 — Rapport Parent",body:"<p>Commission royale sur l'enseignement. Réforme complète : laïcisation, gratuité, scolarisation obligatoire jusqu'à 15 ans, polyvalentes, CÉGEP, réseau UQ. Création du ministère de l'Éducation.</p>"},
+  t5:{title:"1964 — Loi 16 (Loi sur la capacité juridique de la femme mariée)",body:"<p>Adoptée par Marie-Claire Kirkland-Casgrain. Les femmes mariées peuvent désormais signer des contrats, exercer une profession et gérer leurs propres biens sans l'autorisation de leur mari.</p>"},
+  t6:{title:"1967 — Exposition universelle (Expo 67)",body:"<p>Tenue à Montréal. Le Québec et le Canada s'affirment sur la scène internationale. Effervescence culturelle. De Gaulle prononce son célèbre « Vive le Québec libre ! ».</p>"},
+  t7:{title:"1970 — Crise d'Octobre",body:"<p>Le FLQ kidnappe le diplomate britannique James Cross et assassine le ministre Pierre Laporte. Trudeau impose la Loi sur les mesures de guerre : arrestations massives sans mandat, suspension des libertés civiles. L'armée canadienne déployée à Montréal.</p>"},
+  t8:{title:"1972 — Front commun syndical",body:"<p>Les trois centrales (CEQ, CSN, FTQ) déclenchent une grève illimitée des employés de l'État. Revendications : meilleurs salaires et meilleures conditions de travail. Tensions avec le gouvernement Bourassa.</p>"},
+  t9:{title:"1973 — Crise du pétrole",body:"<p>L'OPEP augmente le prix du baril. Fin des Trente Glorieuses. Inflation, ralentissement économique. Bourassa répond avec les grands chantiers : Baie-James, Jeux olympiques 1976, métro.</p>"},
+  t10:{title:"1975 — Convention de la Baie-James et du Nord québécois",body:"<p>Première grande entente entre le gouvernement québécois et les peuples autochtones (Cris/Eeyou et Inuits). Les Autochtones avaient fait arrêter les travaux par les tribunaux. L'entente prévoit des compensations financières et une plus grande autonomie politique.</p>"},
+  t11:{title:"1976 — Élection du Parti québécois",body:"<p>René Lévesque remporte les élections provinciales. Premier gouvernement souverainiste au Québec. Promet un référendum sur l'indépendance. Adopte la Loi 101, la Loi sur les normes du travail, la Loi sur le financement des partis politiques.</p>"},
+  t12:{title:"1977 — Loi 101 — Charte de la langue française",body:"<p>Le français devient la seule langue officielle du Québec. Accès à l'école anglaise réservé aux enfants dont un parent a fréquenté l'école anglaise. Français obligatoire dans les lieux de travail et l'affichage commercial. ⇒ Départ de nombreux Anglo-Québécois.</p>"}
+};
+
+function openTooltip(id){
+  const d=tlData[id];
+  document.getElementById('tt-title').textContent=d.title;
+  document.getElementById('tt-body').innerHTML=d.body;
+  document.getElementById('tooltip-overlay').classList.add('active');
+}
+function closeTooltip(e){
+  if(!e||e.target===document.getElementById('tooltip-overlay')||e.target.classList.contains('tooltip-close'))
+    document.getElementById('tooltip-overlay').classList.remove('active');
+}
+function toggleCard(card){
+  if(document.body.classList.contains('revision-mode'))return;
+  card.classList.toggle('open');
+}
+function showAll(){
+  document.body.classList.remove('revision-mode');
+  document.getElementById('btn-revision').classList.remove('btn-active');
+  document.getElementById('btn-revision').textContent='📝 Mode révision';
+  document.querySelectorAll('.card').forEach(c=>c.classList.add('open'));
+}
+function closeAll(){
+  document.body.classList.remove('revision-mode');
+  document.getElementById('btn-revision').classList.remove('btn-active');
+  document.getElementById('btn-revision').textContent='📝 Mode révision';
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('open'));
+}
+function toggleRevision(){
+  const btn=document.getElementById('btn-revision');
+  if(document.body.classList.contains('revision-mode')){
+    document.body.classList.remove('revision-mode');
+    btn.classList.remove('btn-active');
+    btn.textContent='📝 Mode révision';
+  }else{
+    document.body.classList.add('revision-mode');
+    document.querySelectorAll('.card').forEach(c=>c.classList.remove('open'));
+    btn.classList.add('btn-active');
+    btn.textContent='📖 Quitter le mode révision';
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTooltip({target:document.getElementById('tooltip-overlay')});});
+</script>
+</body>
+</html>
